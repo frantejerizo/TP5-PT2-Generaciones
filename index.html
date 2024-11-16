@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +13,10 @@
 <body>
     <header></header>
     <main> 
-        <section class="container my-5">
-        <h1 class="title text-center">Crea tu persona: </h1>
+        <h1 class="text-center my-4">Crea tu persona: </h1>
+        <section class="container my-4 d-flex flex-row">
 
-        <form>
+        <form class="col-md-6">
             <div>
               <label for="nombre" class="form-label">Ingrese su nombre:</label>
               <input
@@ -31,48 +31,93 @@
             </div>
 
             <div>
-              <label for="nombre" class="form-label">Ingrese su nombre:</label>
+              <label for="edad" class="form-label">Ingrese edad:</label>
               <input
-                id="nombre"
-                type="text"
+                id="edad"
+                type="number"
                 class="form-control mb-3"
-                placeholder="Ej: Jorgito Gonzales"
-                minlength="4"
-                maxlength="50"
+                placeholder="Ej: 20"
+                min="0"
+                max="99"
                 required
               />
             </div>
 
             <div>
-              <label for="nombre" class="form-label">Ingrese su nombre:</label>
+              <label for="dni" class="form-label">Ingrese su DNI:</label>
               <input
-                id="nombre"
+                id="dni"
                 type="text"
                 class="form-control mb-3"
-                placeholder="Ej: Jorgito Gonzales"
-                minlength="4"
-                maxlength="50"
+                placeholder="Ej: 45231594"
+                minlength="8"
+                maxlength="8"
+                required
+              />
+            </div>
+
+            <div class="my-3">
+              <label class="form-label">Genero: </label>
+              <div>
+                <input type="radio" name="genero" />
+                <label>Femenino</label>
+                <input type="radio" name="genero" />
+                <label>Masculino</label>
+                <input type="radio" name="genero" checked />
+                <label>Prefiero no decirlo</label>
+              </div>
+            </div>
+
+            <div>
+              <label for="peso" class="form-label">Ingrese su peso en KG:</label>
+              <input
+                id="peso"
+                type="number"
+                class="form-control mb-3"
+                placeholder="Ej: 75"
+                min="0"
+                max="500"
                 required
               />
             </div>
 
             <div>
-              <label for="nombre" class="form-label">Ingrese su nombre:</label>
+              <label for="altura" class="form-label">Ingrese su altura en CM:</label>
               <input
-                id="nombre"
-                type="text"
+                id="altura"
+                type="number"
                 class="form-control mb-3"
-                placeholder="Ej: Jorgito Gonzales"
-                minlength="4"
-                maxlength="50"
+                placeholder="Ej: 174"
+                min="50"
+                max="250"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="anioNacimiento" class="form-label">Ingrese su año de nacimiento:</label>
+              <input
+                id="anioNacimiento"
+                type="number"
+                class="form-control mb-3"
+                placeholder="Ej: 2001"
+                min="1950"
+                max="2024"
                 required
               />
             </div>
             
-            <button type="submit" class="btn btn-primary">
-              Enviar
+            <button type="submit" class="btn btn-primary my-3">
+              Crear Persona
             </button>
         </form>
+
+      <div class="col-md-6 d-flex flex-column p-5 justify-content-center align-items-center">
+        <button class="btn btn-warning w-50 my-3">Mostrar Generación</button>
+        <button class="btn btn-danger w-50 my-3">Es mayor de edad?</button>
+        <button class="btn btn-success w-50 my-3">Mostrar datos</button>
+      </div>
+
         </section>
     </main>
     <footer></footer>
