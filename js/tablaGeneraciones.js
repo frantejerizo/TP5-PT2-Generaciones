@@ -6,9 +6,9 @@ class Persona
     #sexo
     #peso
     #altura
-    #añoNacimiento
+    #anioNacimiento
 
-    constructor(nombre,edad,dni,sexo,peso,altura,añoNacimiento)
+    constructor(nombre,edad,dni,sexo,peso,altura,anioNacimiento)
     {
         this.#nombre= nombre
         this.#edad= edad
@@ -16,28 +16,28 @@ class Persona
         this.#sexo= sexo
         this.#peso= peso
         this.#altura= altura
-        this.#añoNacimiento= añoNacimiento
+        this.#anioNacimiento= anioNacimiento
     }
 
     mostrarGeneracion()
     {
-        if (this.#añoNacimiento >= 1994 && this.#añoNacimiento <= 2010) 
+        if (this.#anioNacimiento >= 1994 && this.#anioNacimiento <= 2010) 
         {
             alert("Pertenece a la Generación Z.");
         } 
-        else if (this.#añoNacimiento >= 1981 && this.#añoNacimiento <= 1993) 
+        else if (this.#anioNacimiento >= 1981 && this.#anioNacimiento <= 1993) 
         {
             alert("Pertenece a la Generación Y.");
         } 
-        else if (this.#añoNacimiento >= 1969 && this.#añoNacimiento <= 1980) 
+        else if (this.#anioNacimiento >= 1969 && this.#anioNacimiento <= 1980) 
         {
             alert("Pertenece a la Generación X.");
         }
-        else if (this.#añoNacimiento >= 1949 && this.#añoNacimiento <= 1968) 
+        else if (this.#anioNacimiento >= 1949 && this.#anioNacimiento <= 1968) 
         {
             alert("Pertenece a la Generación Baby Boom.");
         } 
-        else if (this.#añoNacimiento >= 1930 && this.#añoNacimiento <= 1948) 
+        else if (this.#anioNacimiento >= 1930 && this.#anioNacimiento <= 1948) 
         {
             alert("Pertenece a la Generación Silent Generation.");
         } 
@@ -51,28 +51,33 @@ class Persona
     {
         if (this.#edad>= 18)
         {
-            alert(`<p>Es mayor de edad.</p>`)
+            alert(`Es mayor de edad. 
+            Edad del susodicho: ${this.#edad}`)
         }
         else
         {
-            alert(`<p>No es mayor de edad.</p>`)
+            alert(`No es mayor de edad. 
+            Edad del susodicho: ${this.#edad}`)
         }
     }
 
     mostrarDatos()
     {
-        alert(`<h3>Datos de la persona:</h3>`)
-        alert(`<ul>
-            <li>Nombre: ${this.#nombre}</li>
-            <li>Edad: ${this.#edad}</li>
-            <li>DNI: ${this.#dni}</li>
-            <li>Sexo: ${this.#sexo}
-            <li>Peso: ${this.#peso}kg</li>
-            <li>Altura: ${this.#altura}cm</li>
-            <li>Año de nacimiento: ${this.#añoNacimiento}</li>
-            </ul`)
+        alert(`Datos de la persona:
+
+            Nombre: ${this.#nombre}
+            Edad: ${this.#edad}
+            DNI: ${this.#dni}
+            Sexo: ${this.#sexo}
+            Peso: ${this.#peso}kg
+            Altura: ${this.#altura}cm
+            Año de nacimiento: ${this.#anioNacimiento}
+            `)
     }
 }
+
+// Declarar la variable fuera del scope de la función para que sea accesible globalmente
+let nuevaPersona = null;
 
 const formulario = document.querySelector("form")
 formulario.addEventListener("submit",crearPersona)
@@ -80,17 +85,35 @@ formulario.addEventListener("submit",crearPersona)
 function crearPersona(e)
 {
     e.preventDefault()
-    const nombre = document.getElementById("nombre")
-    const edad = document.getElementById("edad")
-    const dni = document.getElementById("dni")
-    const sexo = "M"
-    const peso = document.getElementById("peso")
-    const altura = document.getElementById("altura")
-    const anioNacimiento = document.getElementById("anioNacimiento")
 
-    const nuevaPersona = new Persona(nombre,edad,dni,sexo,peso,altura,anioNacimiento)
+    const nombre = document.getElementById("nombre").value
+    const edad = document.getElementById("edad").value
+    const dni = document.getElementById("dni").value
+    const sexo = document.getElementById("sexo").value
+    const peso = document.getElementById("peso").value
+    const altura = document.getElementById("altura").value
+    const anioNacimiento = document.getElementById("anioNacimiento").value
 
+    nuevaPersona = new Persona(nombre, edad, dni, sexo, peso, altura, anioNacimiento);
+    alert("Persona creada exitosamente");
 }
+
+// Seleccionamos los botones del html y asignamos eventos a cada uno con sus respectivas funciones
+
+document.querySelector(".btn-warning").addEventListener("click", () => {
+    if (nuevaPersona) nuevaPersona.mostrarGeneracion();
+    else alert("Primero debes crear una persona");
+});
+
+document.querySelector(".btn-danger").addEventListener("click", () => {
+    if (nuevaPersona) nuevaPersona.esMayorDeEdad();
+    else alert("Primero debes crear una persona");
+});
+
+document.querySelector(".btn-success").addEventListener("click", () => {
+    if (nuevaPersona) nuevaPersona.mostrarDatos();
+    else alert("Primero debes crear una persona");
+});
 
 
 
